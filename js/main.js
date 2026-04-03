@@ -447,7 +447,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     // Body
     ctx.beginPath();
     ctx.arc(x, y, r, 0, Math.PI * 2);
-    ctx.fillStyle = accent ? 'rgba(79,106,246,0.22)' : BG;
+    ctx.fillStyle = accent ? 'rgba(242,122,26,0.25)' : BG;
     ctx.fill();
 
     // Highlight
