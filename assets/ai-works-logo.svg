@@ -3,9 +3,9 @@
   <desc id="logoDesc">A stylized A and W monogram with connected nodes and the text AI Works.</desc>
   <defs>
     <linearGradient id="iconGradient" x1="20" y1="72" x2="106" y2="14" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#9B4DFF"/>
-      <stop offset="0.5" stop-color="#4E8DFF"/>
-      <stop offset="1" stop-color="#2EDBEB"/>
+      <stop offset="0" stop-color="#E85D04"/>
+      <stop offset="0.5" stop-color="#F27A1A"/>
+      <stop offset="1" stop-color="#FFBA08"/>
     </linearGradient>
   </defs>
 
@@ -15,8 +15,8 @@
     <path d="M28 42L61 60" stroke="#0B1B66" stroke-width="18" stroke-linecap="round"/>
     <path d="M28 42L61 60" stroke="url(#iconGradient)" stroke-width="10" stroke-linecap="round"/>
     <circle cx="12" cy="69" r="12" fill="url(#iconGradient)" stroke="#0B1B66" stroke-width="5"/>
-    <circle cx="45" cy="12" r="10" fill="#2EDBEB" stroke="#0B1B66" stroke-width="5"/>
-    <circle cx="96" cy="32" r="10" fill="#2EDBEB" stroke="#0B1B66" stroke-width="5"/>
+    <circle cx="45" cy="12" r="10" fill="#FFBA08" stroke="#0B1B66" stroke-width="5"/>
+    <circle cx="96" cy="32" r="10" fill="#FFBA08" stroke="#0B1B66" stroke-width="5"/>
     <path d="M42 40L48 38L45 34" fill="#F8FAFC"/>
   </g>
 
