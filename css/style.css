@@ -50,6 +50,35 @@ body {
   background-attachment: fixed;
 }
 
+/* Wandering light that sweeps across the dot grid */
+body::before {
+  content: '';
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(circle, rgba(242,122,26,0.08) 0%, rgba(255,186,8,0.04) 30%, transparent 70%);
+  animation: wanderLight 20s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes wanderLight {
+  0%   { transform: translate(10vw, 15vh); }
+  14%  { transform: translate(60vw, 5vh); }
+  28%  { transform: translate(80vw, 45vh); }
+  42%  { transform: translate(50vw, 75vh); }
+  57%  { transform: translate(15vw, 85vh); }
+  71%  { transform: translate(5vw, 40vh); }
+  85%  { transform: translate(40vw, 20vh); }
+  100% { transform: translate(10vw, 15vh); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before { animation: none; opacity: 0; }
+}
+
 .container {
   max-width: 1140px;
   margin: 0 auto;
