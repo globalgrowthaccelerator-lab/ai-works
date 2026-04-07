@@ -163,22 +163,27 @@ document.addEventListener('click', (e) => {
 // --- Active nav link highlight ---
 (function() {
   const path = window.location.pathname;
-  const filename = path.split('/').pop() || 'index.html';
-  const solutionPages = ['audiobook-production.html', 'ai-workflow-automation.html', 'for-authors.html', 'for-businesses.html'];
+  const solutionFolders = ['/audiobook-production/', '/ai-workflow-automation/', '/for-authors/', '/for-businesses/'];
 
   document.querySelectorAll('.nav-links a').forEach(a => {
     const href = a.getAttribute('href') || '';
-    const hrefFile = href.split('/').pop();
-    if (
-      (filename === 'index.html' && (href === 'index.html' || href === '/' || href === '' || href === '#')) ||
-      (hrefFile && hrefFile !== '' && hrefFile !== '#' && filename === hrefFile)
-    ) {
+    if (href === '#' || a.classList.contains('dropdown-toggle')) return;
+
+    // Resolve relative href to absolute for comparison
+    const resolved = new URL(href, window.location.href).pathname;
+
+    // Home: match / or /index.html
+    if ((resolved === '/' || resolved === '/index.html') && (path === '/' || path === '/index.html')) {
+      a.classList.add('active');
+    }
+    // Other pages: match folder path
+    else if (resolved !== '/' && path.startsWith(resolved)) {
       a.classList.add('active');
     }
   });
 
   // Highlight "Solutions" toggle when on a solutions sub-page
-  if (solutionPages.includes(filename)) {
+  if (solutionFolders.some(f => path.includes(f))) {
     document.querySelectorAll('.dropdown-toggle').forEach(t => t.classList.add('active'));
   }
 })();
@@ -372,7 +377,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
   const world = engine.world;
 
-  const BG = '#E0E5EC';
+  const BG = '#1E1E1E';
 
   // --- Walls: floor with bounce, side walls smooth ---
   const floorY = H - 5;
@@ -623,13 +628,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     // Shadow dark (offset bottom-right)
     ctx.beginPath();
     ctx.arc(x + 5, y + 5, r + 2, 0, Math.PI * 2);
-    ctx.fillStyle = 'rgba(140,155,175,0.3)';
+    ctx.fillStyle = 'rgba(0,0,0,0.5)';
     ctx.fill();
 
     // Shadow light (offset top-left)
     ctx.beginPath();
     ctx.arc(x - 4, y - 4, r + 2, 0, Math.PI * 2);
-    ctx.fillStyle = 'rgba(255,255,255,0.6)';
+    ctx.fillStyle = 'rgba(50,50,50,0.6)';
     ctx.fill();
 
     // Body
@@ -641,7 +646,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     // Highlight
     if (!accent) {
       const g = ctx.createRadialGradient(x - r * 0.28, y - r * 0.28, 0, x, y, r);
-      g.addColorStop(0, 'rgba(255,255,255,0.3)');
+      g.addColorStop(0, 'rgba(60,60,60,0.4)');
       g.addColorStop(0.6, 'rgba(255,255,255,0)');
       ctx.beginPath();
       ctx.arc(x, y, r, 0, Math.PI * 2);
@@ -671,12 +676,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
     // Shadow dark
     rrPath(4, 4, hw + 1, hh + 1, cr);
-    ctx.fillStyle = 'rgba(140,155,175,0.3)';
+    ctx.fillStyle = 'rgba(0,0,0,0.5)';
     ctx.fill();
 
     // Shadow light
     rrPath(-3, -3, hw + 1, hh + 1, cr);
-    ctx.fillStyle = 'rgba(255,255,255,0.6)';
+    ctx.fillStyle = 'rgba(50,50,50,0.6)';
     ctx.fill();
 
     // Body
@@ -686,7 +691,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
     // Highlight
     const g = ctx.createLinearGradient(-hw, -hh, hw * 0.3, hh * 0.3);
-    g.addColorStop(0, 'rgba(255,255,255,0.18)');
+    g.addColorStop(0, 'rgba(60,60,60,0.25)');
     g.addColorStop(0.5, 'rgba(255,255,255,0)');
     rrPath(0, 0, hw, hh, cr);
     ctx.fillStyle = g;
@@ -760,7 +765,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     ctx.save();
     ctx.setLineDash([4, 8]);
     ctx.lineWidth = 1;
-    ctx.strokeStyle = 'rgba(163,177,198,0.2)';
+    ctx.strokeStyle = 'rgba(255,255,255,0.08)';
     ctx.lineCap = 'round';
     for (let i = 0; i < shapes.length; i++) {
       const t = trails[i];

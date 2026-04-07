@@ -1,4 +1,4 @@
-<svg width="360" height="88" viewBox="0 0 360 88" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logoTitle logoDesc">
+<svg width="460" height="88" viewBox="0 0 460 88" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logoTitle logoDesc">
   <title id="logoTitle">AI Works logo</title>
   <desc id="logoDesc">A stylized A and W monogram with connected nodes and the text AI Works.</desc>
   <defs>
@@ -10,15 +10,15 @@
   </defs>
 
   <g transform="translate(4 4)">
-    <path d="M12 69L45 12L74 69L96 32" stroke="#0B1B66" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12 69L45 12L74 69L96 32" stroke="#141414" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M12 69L45 12L74 69L96 32" stroke="url(#iconGradient)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M28 42L61 60" stroke="#0B1B66" stroke-width="18" stroke-linecap="round"/>
+    <path d="M28 42L61 60" stroke="#141414" stroke-width="18" stroke-linecap="round"/>
     <path d="M28 42L61 60" stroke="url(#iconGradient)" stroke-width="10" stroke-linecap="round"/>
-    <circle cx="12" cy="69" r="12" fill="url(#iconGradient)" stroke="#0B1B66" stroke-width="5"/>
-    <circle cx="45" cy="12" r="10" fill="#FFBA08" stroke="#0B1B66" stroke-width="5"/>
-    <circle cx="96" cy="32" r="10" fill="#FFBA08" stroke="#0B1B66" stroke-width="5"/>
+    <circle cx="12" cy="69" r="12" fill="url(#iconGradient)" stroke="#141414" stroke-width="5"/>
+    <circle cx="45" cy="12" r="10" fill="#FFBA08" stroke="#141414" stroke-width="5"/>
+    <circle cx="96" cy="32" r="10" fill="#FFBA08" stroke="#141414" stroke-width="5"/>
     <path d="M42 40L48 38L45 34" fill="#F8FAFC"/>
   </g>
 
-  <text x="126" y="62" fill="#0B1B66" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="52" font-weight="700" letter-spacing="-1.6">AI Works</text>
+  <text x="126" y="62" fill="#F0F0F0" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="42" font-weight="700" letter-spacing="-1.2">The AI Works</text>
 </svg>

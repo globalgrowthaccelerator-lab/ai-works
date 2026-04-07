@@ -10,29 +10,30 @@
 }
 
 :root {
-  --bg: #E0E5EC;
-  --shadow-dark: #A3B1C6;
-  --shadow-light: #FFFFFF;
+  --bg: #141414;
+  --shadow-dark: #000000;
+  --shadow-light: #2A2A2A;
   --accent: #F27A1A;
   --accent-dark: #D4650F;
   --accent-light: #FFAA5C;
-  --text: #2D3748;
-  --text-muted: #5A6A7E;
-  --text-dim: #8494A7;
+  --text: #F0F0F0;
+  --text-muted: #A0A0A0;
+  --text-dim: #666666;
   --success: #38B2AC;
   --radius: 28px;
   --radius-sm: 16px;
   --radius-xs: 12px;
-  --neu-out: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
-  --neu-out-sm: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
-  --neu-out-lg: 12px 12px 24px var(--shadow-dark), -12px -12px 24px var(--shadow-light);
-  --neu-in: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
-  --neu-in-sm: inset 2px 2px 5px var(--shadow-dark), inset -2px -2px 5px var(--shadow-light);
+  --neu-out: 8px 8px 20px var(--shadow-dark), -6px -6px 18px var(--shadow-light);
+  --neu-out-sm: 5px 5px 14px var(--shadow-dark), -4px -4px 12px var(--shadow-light);
+  --neu-out-lg: 12px 12px 30px var(--shadow-dark), -10px -10px 26px var(--shadow-light);
+  --neu-in: inset 4px 4px 10px var(--shadow-dark), inset -4px -4px 10px var(--shadow-light);
+  --neu-in-sm: inset 2px 2px 6px var(--shadow-dark), inset -2px -2px 6px var(--shadow-light);
 }
 
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 90px;
+  background: var(--bg);
 }
 
 body {
@@ -43,11 +44,19 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   background-image:
-    radial-gradient(circle at 1.5px 1.5px, rgba(163,177,198,0.35) 1.5px, transparent 0),
+    radial-gradient(circle at 1.5px 1.5px, rgba(255,255,255,0.08) 1.5px, transparent 0),
     radial-gradient(ellipse 80% 50% at 20% 60%, rgba(242,122,26,0.04) 0%, transparent 60%),
     radial-gradient(ellipse 60% 40% at 80% 30%, rgba(255,186,8,0.03) 0%, transparent 50%);
   background-size: 28px 28px, 100% 100%, 100% 100%;
   background-attachment: fixed;
+}
+
+/* Dark mode neumorphic edge hint — subtle border on all raised elements */
+.service-card, .value, .who-card, .contact-item, .visual-card,
+.enquiry-form, .footer-content, .cta-inner, .step-card,
+.info-card, .philosophy-card, .stat-box, .service-icon,
+.section-tag, .btn-outline {
+  border: 1px solid rgba(255,255,255,0.06);
 }
 
 /* Wandering light that sweeps across the dot grid */
@@ -212,7 +221,7 @@ a {
 
 .logo-image {
   display: block;
-  width: 172px;
+  width: 220px;
   height: auto;
 }
 
@@ -576,7 +585,7 @@ a {
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(circle at 1.5px 1.5px, rgba(163,177,198,0.35) 1.5px, transparent 0),
+    radial-gradient(circle at 1.5px 1.5px, rgba(255,255,255,0.08) 1.5px, transparent 0),
     linear-gradient(135deg, rgba(242,122,26,0.03) 0%, transparent 40%),
     linear-gradient(315deg, rgba(255,170,92,0.03) 0%, transparent 40%),
     var(--bg);
@@ -914,8 +923,8 @@ a {
   padding: 72px 0 36px;
   position: relative;
   background:
-    radial-gradient(circle at 1.5px 1.5px, rgba(163,177,198,0.35) 1.5px, transparent 0),
-    linear-gradient(180deg, var(--bg) 0%, rgba(224,229,236,0.95) 50%),
+    radial-gradient(circle at 1.5px 1.5px, rgba(255,255,255,0.08) 1.5px, transparent 0),
+    linear-gradient(180deg, var(--bg) 0%, rgba(20,20,20,0.95) 50%),
     linear-gradient(0deg, rgba(242,122,26,0.04) 0%, transparent 40%);
   background-size: 28px 28px, 100% 100%, 100% 100%;
 }
@@ -1013,7 +1022,7 @@ a {
 .page-hero {
   padding: 160px 0 100px;
   background:
-    radial-gradient(circle at 1.5px 1.5px, rgba(163,177,198,0.35) 1.5px, transparent 0),
+    radial-gradient(circle at 1.5px 1.5px, rgba(255,255,255,0.08) 1.5px, transparent 0),
     linear-gradient(160deg, rgba(242,122,26,0.05) 0%, transparent 35%),
     linear-gradient(340deg, rgba(255,186,8,0.04) 0%, transparent 30%),
     var(--bg);
