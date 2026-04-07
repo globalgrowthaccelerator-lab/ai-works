@@ -358,7 +358,8 @@ a {
 .hero-actions {
   display: flex;
   gap: 20px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  align-items: center;
 }
 
 /* --- Section Common --- */
