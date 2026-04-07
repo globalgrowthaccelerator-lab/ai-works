@@ -31,10 +31,32 @@ if (navToggle && navLinks) {
   });
 }
 
+// --- Dropdown toggle (mobile tap + desktop click prevention) ---
+document.querySelectorAll('.nav-dropdown > .dropdown-toggle').forEach(toggle => {
+  toggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    const parent = toggle.parentElement;
+    // Close other open dropdowns
+    document.querySelectorAll('.nav-dropdown.open').forEach(d => {
+      if (d !== parent) d.classList.remove('open');
+    });
+    parent.classList.toggle('open');
+  });
+});
+
+// Close dropdown when clicking outside
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.nav-dropdown')) {
+    document.querySelectorAll('.nav-dropdown.open').forEach(d => d.classList.remove('open'));
+  }
+});
+
 // --- Active nav link highlight ---
 (function() {
   const path = window.location.pathname;
   const filename = path.split('/').pop() || 'index.html';
+  const solutionPages = ['audiobook-production.html', 'ai-workflow-automation.html', 'for-authors.html', 'for-businesses.html'];
+
   document.querySelectorAll('.nav-links a').forEach(a => {
     const href = a.getAttribute('href') || '';
     const hrefFile = href.split('/').pop();
@@ -45,6 +67,11 @@ if (navToggle && navLinks) {
       a.classList.add('active');
     }
   });
+
+  // Highlight "Solutions" toggle when on a solutions sub-page
+  if (solutionPages.includes(filename)) {
+    document.querySelectorAll('.dropdown-toggle').forEach(t => t.classList.add('active'));
+  }
 })();
 
 // --- Enquiry / Landing form handling via Web3Forms ---
