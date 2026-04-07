@@ -549,12 +549,13 @@ a {
   width: 400px;
   height: 400px;
   top: 50%;
-  right: -120px;
+  right: -250px;
   transform: translateY(-50%) rotate(45deg);
   border-radius: 60px;
   background: var(--bg);
   box-shadow: var(--neu-out);
-  opacity: 0.3;
+  opacity: 0.15;
+  z-index: 0;
   pointer-events: none;
 }
 
@@ -563,6 +564,8 @@ a {
   grid-template-columns: 1.1fr 0.9fr;
   gap: 56px;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 .about-content .section-tag {
