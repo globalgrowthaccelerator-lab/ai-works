@@ -280,6 +280,25 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   ]);
 
 
+  // --- Text barriers: one per element, sized to actual rendered dimensions ---
+  if (!isMobile) {
+    const heroRect = hero.getBoundingClientRect();
+    const els = hero.querySelectorAll('.hero-content h1, .hero-content .hero-subtitle, .hero-content .hero-actions');
+
+    els.forEach(el => {
+      const r = el.getBoundingClientRect();
+      const bx = r.left - heroRect.left + r.width / 2;
+      const by = r.top - heroRect.top + r.height / 2;
+
+      World.add(world, Bodies.rectangle(bx, by, r.width + 10, r.height + 6, {
+        isStatic: true,
+        friction: 0.4,
+        restitution: 0.3,
+        chamfer: { radius: 8 }
+      }));
+    });
+  }
+
   // --- Shapes ---
   const shapes = [];
   const trails = [];
