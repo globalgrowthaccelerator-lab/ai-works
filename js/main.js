@@ -23,7 +23,7 @@
 
   // Each laser: travels from one dot to another, fades out
   const lasers = [];
-  const MAX_LASERS = 3;
+  const MAX_LASERS = 12;
 
   function gridPos(col, row) {
     return { x: col * GRID + 1.5, y: row * GRID + 1.5 };
@@ -84,9 +84,9 @@
   function animate() {
     ctx.clearRect(0, 0, W, H);
 
-    // Spawn new lasers periodically
+    // Spawn new lasers frequently
     frame++;
-    if (frame % 40 === 0 && lasers.length < MAX_LASERS) {
+    if (frame % 8 === 0 && lasers.length < MAX_LASERS) {
       spawnLaser();
     }
 
@@ -104,9 +104,8 @@
     requestAnimationFrame(animate);
   }
 
-  // Spawn a couple immediately
-  spawnLaser();
-  setTimeout(spawnLaser, 300);
+  // Spawn several immediately so it's active from the start
+  for (let i = 0; i < 6; i++) spawnLaser();
   animate();
 
   window.addEventListener('resize', resize);
