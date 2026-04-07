@@ -280,23 +280,52 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   ]);
 
 
-  // --- Text barriers: one per element, sized to actual rendered dimensions ---
+  // --- Text barriers: sized to actual rendered text width, not container ---
   if (!isMobile) {
     const heroRect = hero.getBoundingClientRect();
-    const els = hero.querySelectorAll('.hero-content h1, .hero-content .hero-subtitle, .hero-content .hero-actions');
 
-    els.forEach(el => {
-      const r = el.getBoundingClientRect();
-      const bx = r.left - heroRect.left + r.width / 2;
-      const by = r.top - heroRect.top + r.height / 2;
+    function getTextWidth(el) {
+      // Use Range to measure actual inline text width
+      const range = document.createRange();
+      range.selectNodeContents(el);
+      return range.getBoundingClientRect();
+    }
 
-      World.add(world, Bodies.rectangle(bx, by, r.width + 10, r.height + 6, {
-        isStatic: true,
-        friction: 0.4,
-        restitution: 0.3,
-        chamfer: { radius: 8 }
-      }));
-    });
+    // H1 — measure the actual text span
+    const h1 = hero.querySelector('.hero-content h1');
+    if (h1) {
+      const tr = getTextWidth(h1);
+      World.add(world, Bodies.rectangle(
+        tr.left - heroRect.left + tr.width / 2,
+        tr.top - heroRect.top + tr.height / 2,
+        tr.width + 16, tr.height + 8,
+        { isStatic: true, friction: 0.4, restitution: 0.3, chamfer: { radius: 8 } }
+      ));
+    }
+
+    // Subtitle — measure actual text lines
+    const subtitle = hero.querySelector('.hero-content .hero-subtitle');
+    if (subtitle) {
+      const tr = getTextWidth(subtitle);
+      World.add(world, Bodies.rectangle(
+        tr.left - heroRect.left + tr.width / 2,
+        tr.top - heroRect.top + tr.height / 2,
+        tr.width + 12, tr.height + 6,
+        { isStatic: true, friction: 0.4, restitution: 0.3, chamfer: { radius: 8 } }
+      ));
+    }
+
+    // Buttons — already inline, getBoundingClientRect is accurate
+    const actions = hero.querySelector('.hero-content .hero-actions');
+    if (actions) {
+      const r = actions.getBoundingClientRect();
+      World.add(world, Bodies.rectangle(
+        r.left - heroRect.left + r.width / 2,
+        r.top - heroRect.top + r.height / 2,
+        r.width + 12, r.height + 8,
+        { isStatic: true, friction: 0.4, restitution: 0.3, chamfer: { radius: 8 } }
+      ));
+    }
   }
 
   // --- Shapes ---
