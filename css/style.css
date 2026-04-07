@@ -43,10 +43,10 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   background-image:
-    radial-gradient(circle at 1px 1px, rgba(163,177,198,0.18) 1px, transparent 0),
+    radial-gradient(circle at 1.5px 1.5px, rgba(163,177,198,0.35) 1.5px, transparent 0),
     radial-gradient(ellipse 80% 50% at 20% 60%, rgba(242,122,26,0.04) 0%, transparent 60%),
     radial-gradient(ellipse 60% 40% at 80% 30%, rgba(255,186,8,0.03) 0%, transparent 50%);
-  background-size: 32px 32px, 100% 100%, 100% 100%;
+  background-size: 28px 28px, 100% 100%, 100% 100%;
   background-attachment: fixed;
 }
 
@@ -536,9 +536,11 @@ a {
   position: relative;
   overflow: hidden;
   background:
+    radial-gradient(circle at 1.5px 1.5px, rgba(163,177,198,0.35) 1.5px, transparent 0),
     linear-gradient(135deg, rgba(242,122,26,0.03) 0%, transparent 40%),
     linear-gradient(315deg, rgba(255,170,92,0.03) 0%, transparent 40%),
     var(--bg);
+  background-size: 28px 28px, 100% 100%, 100% 100%, 100% 100%;
 }
 
 .about::before {
@@ -869,8 +871,10 @@ a {
   padding: 72px 0 36px;
   position: relative;
   background:
+    radial-gradient(circle at 1.5px 1.5px, rgba(163,177,198,0.35) 1.5px, transparent 0),
     linear-gradient(180deg, var(--bg) 0%, rgba(224,229,236,0.95) 50%),
     linear-gradient(0deg, rgba(242,122,26,0.04) 0%, transparent 40%);
+  background-size: 28px 28px, 100% 100%, 100% 100%;
 }
 
 .footer::before {
@@ -966,9 +970,11 @@ a {
 .page-hero {
   padding: 160px 0 100px;
   background:
+    radial-gradient(circle at 1.5px 1.5px, rgba(163,177,198,0.35) 1.5px, transparent 0),
     linear-gradient(160deg, rgba(242,122,26,0.05) 0%, transparent 35%),
     linear-gradient(340deg, rgba(255,186,8,0.04) 0%, transparent 30%),
     var(--bg);
+  background-size: 28px 28px, 100% 100%, 100% 100%, 100% 100%;
   position: relative;
   overflow: hidden;
 }
