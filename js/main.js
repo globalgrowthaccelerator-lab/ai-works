@@ -5,59 +5,82 @@
 // --- Navbar scroll effect ---
 const navbar = document.getElementById('navbar');
 
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 50) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
-});
+if (navbar) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+}
 
 // --- Mobile nav toggle ---
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
 
-navToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-});
-
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('open');
+if (navToggle && navLinks) {
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
   });
-});
 
-// --- Enquiry form handling via Web3Forms ---
-const enquiryForm = document.getElementById('enquiryForm');
-const formSuccess = document.getElementById('formSuccess');
-const submitBtn = enquiryForm.querySelector('button[type="submit"]');
-
-enquiryForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  submitBtn.disabled = true;
-  submitBtn.textContent = 'Sending...';
-  const formData = new FormData(enquiryForm);
-  const jsonData = Object.fromEntries(formData.entries());
-  try {
-    const response = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(jsonData)
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
     });
-    const result = await response.json();
-    console.log('Web3Forms response:', result);
-    if (result.success) {
-      formSuccess.classList.add('visible');
-      enquiryForm.reset();
-    } else {
-      alert('Submission failed: ' + (result.message || 'Unknown error.'));
+  });
+}
+
+// --- Active nav link highlight ---
+(function() {
+  const path = window.location.pathname;
+  const filename = path.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    const href = a.getAttribute('href') || '';
+    const hrefFile = href.split('/').pop();
+    if (
+      (filename === 'index.html' && (href === 'index.html' || href === '/' || href === '' || href === '#')) ||
+      (hrefFile && hrefFile !== '' && hrefFile !== '#' && filename === hrefFile)
+    ) {
+      a.classList.add('active');
     }
-  } catch (error) {
-    alert('Could not send enquiry. Please use a local server or deploy the site.');
-  }
-  submitBtn.disabled = false;
-  submitBtn.textContent = 'Send Enquiry';
-});
+  });
+})();
+
+// --- Enquiry / Landing form handling via Web3Forms ---
+function initForm(formEl) {
+  if (!formEl) return;
+  const successEl = document.getElementById('formSuccess');
+  const submitBtn = formEl.querySelector('button[type="submit"]');
+  const originalText = submitBtn ? submitBtn.textContent : 'Submit';
+
+  formEl.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending...'; }
+    const formData = new FormData(formEl);
+    const jsonData = Object.fromEntries(formData.entries());
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(jsonData)
+      });
+      const result = await response.json();
+      if (result.success) {
+        if (successEl) successEl.classList.add('visible');
+        formEl.reset();
+      } else {
+        alert('Submission failed: ' + (result.message || 'Unknown error.'));
+      }
+    } catch (error) {
+      alert('Could not send. Please try again or email us directly.');
+    }
+    if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalText; }
+  });
+}
+
+initForm(document.getElementById('enquiryForm'));
+initForm(document.getElementById('landingForm'));
 
 // --- Scroll-triggered animations ---
 const scrollStyle = document.createElement('style');

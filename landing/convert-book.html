@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convert Your Book Into an Audiobook - The AI Works</title>
+  <meta name="description" content="Get a quote to convert your book into a professional AI-narrated audiobook. Fast turnaround, professional quality, platform-ready delivery.">
+  <link rel="icon" type="image/svg+xml" href="../assets/ai-works-logo.svg">
+  <link rel="icon" type="image/png" href="../assets/ai-works-logo.png">
+  <link rel="apple-touch-icon" href="../assets/ai-works-logo.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="../index.html" class="logo">
+        <img src="../assets/ai-works-logo.svg" alt="The AI Works" class="logo-image">
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../audiobook-production.html">Audiobook Production</a></li>
+        <li><a href="../ai-workflow-automation.html">AI Workflow Automation</a></li>
+        <li><a href="../for-authors.html">For Authors &amp; Publishers</a></li>
+        <li><a href="../for-businesses.html">For Businesses</a></li>
+        <li><a href="../how-it-works.html">How It Works</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html" class="btn btn-nav">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Landing Hero -->
+  <section class="landing-hero">
+    <div class="container">
+      <div class="landing-grid">
+        <div class="landing-content">
+          <span class="section-tag">Audiobook Production</span>
+          <h1>Convert Your Book Into an Audiobook</h1>
+          <p>AI-powered narration. Human quality review. Platform-ready delivery. Give your book a voice — in weeks, not months.</p>
+          <ul class="landing-bullets">
+            <li>Professional AI voices with natural pacing and emotion</li>
+            <li>Multi-language production available</li>
+            <li>ACX / Audible-ready file delivery</li>
+            <li>Human quality review on every chapter</li>
+            <li>Turnaround from 3 weeks for a full-length book</li>
+            <li>Voice cloning option — narrate in your own voice</li>
+          </ul>
+          <div class="stat-row" style="margin-top: 36px;">
+            <div class="stat-box">
+              <strong>3–4 wks</strong>
+              <span>Typical turnaround</span>
+            </div>
+            <div class="stat-box">
+              <strong>100%</strong>
+              <span>Human-reviewed</span>
+            </div>
+            <div class="stat-box">
+              <strong>ACX</strong>
+              <span>Platform-ready</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="landing-form-card">
+            <h2>Get a Production Quote</h2>
+            <p>Fill in the details below and we'll get back to you within 24 hours with a timeline and quote.</p>
+            <form id="landingForm" action="https://api.web3forms.com/submit" method="POST">
+              <input type="hidden" name="access_key" value="fca060cc-c6a1-4578-9344-94d998b7799a">
+              <input type="hidden" name="subject" value="Audiobook Production Quote Request">
+              <input type="hidden" name="from_name" value="The AI Works - Audiobook Landing Page">
+              <input type="checkbox" name="botcheck" class="hidden" style="display:none">
+
+              <div class="form-group">
+                <label for="bookTitle">Book Title *</label>
+                <input type="text" id="bookTitle" name="bookTitle" required placeholder="Title of your manuscript">
+              </div>
+              <div class="form-group">
+                <label for="authorName">Author Name *</label>
+                <input type="text" id="authorName" name="authorName" required placeholder="Your name or pen name">
+              </div>
+              <div class="form-group">
+                <label for="language">Target Language(s) *</label>
+                <input type="text" id="language" name="language" required placeholder="e.g. English, or English + Hindi">
+              </div>
+              <div class="form-group">
+                <label for="wordCount">Approximate Word Count *</label>
+                <select id="wordCount" name="wordCount" required>
+                  <option value="" disabled selected>Select word count range...</option>
+                  <option value="Under 20,000 words">Under 20,000 words (short / novella)</option>
+                  <option value="20,000–50,000 words">20,000–50,000 words</option>
+                  <option value="50,000–80,000 words">50,000–80,000 words (typical novel)</option>
+                  <option value="80,000–120,000 words">80,000–120,000 words</option>
+                  <option value="120,000+ words">120,000+ words</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="genre">Genre / Book Type</label>
+                <input type="text" id="genre" name="genre" placeholder="e.g. Business, Fiction, Self-help, Academic">
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required placeholder="your@email.com">
+              </div>
+              <div class="form-group">
+                <label for="notes">Anything else we should know?</label>
+                <textarea id="notes" name="notes" rows="3" placeholder="Voice cloning interest, multi-character fiction, specific platform requirements..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-full">Request Quote</button>
+            </form>
+            <div class="form-success" id="formSuccess">
+              <div class="success-icon">&#10003;</div>
+              <h3>Quote Request Received!</h3>
+              <p>We'll review your book details and get back to you within 24 hours with a timeline and quote.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust section -->
+  <section class="content-section" style="padding-top: 0; padding-bottom: 80px;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Our Process</span>
+        <h2>What Happens After You Submit</h2>
+        <p>A simple, transparent process from quote to finished audiobook.</p>
+      </div>
+      <div class="steps-grid" style="max-width: 720px; margin: 0 auto;">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <h3>We Review Your Details</h3>
+          <p>Within 24 hours, we review your book details and send you a production quote, including timeline and pricing breakdown.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <h3>You Approve &amp; Share Manuscript</h3>
+          <p>Once you approve the quote, you share your manuscript (any format) and we begin the production preparation process.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <h3>We Produce &amp; Review</h3>
+          <p>We narrate your book, process the audio, and run human quality review on every chapter. You'll receive a proof before final delivery.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">04</div>
+          <h3>Delivery &amp; Publishing</h3>
+          <p>We deliver platform-ready audio files and support you through the publishing process on ACX, Findaway, or wherever you're distributing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo">
+            <img src="../assets/ai-works-logo.svg" alt="The AI Works" class="logo-image">
+          </a>
+          <p>AI-powered audiobook production and workflow automation.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Services</h4>
+            <a href="../audiobook-production.html">Audiobook Production</a>
+            <a href="../ai-workflow-automation.html">AI Workflow Automation</a>
+            <a href="../how-it-works.html">How It Works</a>
+          </div>
+          <div class="footer-col">
+            <h4>Who We Serve</h4>
+            <a href="../for-authors.html">Authors &amp; Publishers</a>
+            <a href="../for-businesses.html">Businesses</a>
+            <a href="../about.html">About Us</a>
+            <a href="../contact.html">Contact</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 The AI Works. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
