@@ -279,25 +279,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     })
   ]);
 
-  // --- Solid text barrier (desktop only — on mobile text fills the screen) ---
-  const heroContent = document.querySelector('.hero-content');
-  if (heroContent && !isMobile) {
-    const heroRect = hero.getBoundingClientRect();
-    const contentRect = heroContent.getBoundingClientRect();
-
-    // Position relative to the hero section
-    const tx = contentRect.left - heroRect.left + contentRect.width / 2;
-    const ty = contentRect.top - heroRect.top + contentRect.height / 2;
-    const tw = contentRect.width + 20;  // small padding
-    const th = contentRect.height + 10;
-
-    World.add(world, Bodies.rectangle(tx, ty, tw, th, {
-      isStatic: true,
-      friction: 0.5,
-      restitution: 0.3,
-      chamfer: { radius: 16 }
-    }));
-  }
 
   // --- Shapes ---
   const shapes = [];
