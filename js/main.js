@@ -2,6 +2,116 @@
 // AI Works - Main JavaScript
 // ========================================
 
+// --- Laser grid: fast light pulses between dot grid points ---
+(function () {
+  const canvas = document.getElementById('laserCanvas');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  const GRID = 28; // matches CSS dot grid spacing
+  let W, H, cols, rows;
+
+  function resize() {
+    W = window.innerWidth;
+    H = window.innerHeight;
+    canvas.width = W;
+    canvas.height = H;
+    cols = Math.ceil(W / GRID);
+    rows = Math.ceil(H / GRID);
+  }
+  resize();
+
+  // Each laser: travels from one dot to another, fades out
+  const lasers = [];
+  const MAX_LASERS = 3;
+
+  function gridPos(col, row) {
+    return { x: col * GRID + 1.5, y: row * GRID + 1.5 };
+  }
+
+  function spawnLaser() {
+    // Pick random start dot
+    const c1 = Math.floor(Math.random() * cols);
+    const r1 = Math.floor(Math.random() * rows);
+    const start = gridPos(c1, r1);
+
+    // Pick random end dot — 3 to 12 grid spaces away
+    const dist = 3 + Math.floor(Math.random() * 10);
+    const angle = Math.random() * Math.PI * 2;
+    const c2 = Math.min(cols - 1, Math.max(0, Math.round(c1 + Math.cos(angle) * dist)));
+    const r2 = Math.min(rows - 1, Math.max(0, Math.round(r1 + Math.sin(angle) * dist)));
+    const end = gridPos(c2, r2);
+
+    lasers.push({
+      sx: start.x, sy: start.y,
+      ex: end.x, ey: end.y,
+      progress: 0,       // 0 to 1: head position
+      tail: 0.25,         // trail length as fraction
+      speed: 0.03 + Math.random() * 0.04,  // fast
+      opacity: 0.3 + Math.random() * 0.3,
+      width: 1 + Math.random() * 1,
+    });
+  }
+
+  function drawLaser(l) {
+    const headX = l.sx + (l.ex - l.sx) * l.progress;
+    const headY = l.sy + (l.ey - l.sy) * l.progress;
+    const tailP = Math.max(0, l.progress - l.tail);
+    const tailX = l.sx + (l.ex - l.sx) * tailP;
+    const tailY = l.sy + (l.ey - l.sy) * tailP;
+
+    const grad = ctx.createLinearGradient(tailX, tailY, headX, headY);
+    grad.addColorStop(0, 'rgba(242,122,26,0)');
+    grad.addColorStop(0.6, `rgba(242,122,26,${l.opacity * 0.5})`);
+    grad.addColorStop(1, `rgba(255,186,8,${l.opacity})`);
+
+    ctx.beginPath();
+    ctx.moveTo(tailX, tailY);
+    ctx.lineTo(headX, headY);
+    ctx.strokeStyle = grad;
+    ctx.lineWidth = l.width;
+    ctx.lineCap = 'round';
+    ctx.stroke();
+
+    // Bright dot at the head
+    ctx.beginPath();
+    ctx.arc(headX, headY, l.width + 1, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255,200,60,${l.opacity * 0.8})`;
+    ctx.fill();
+  }
+
+  let frame = 0;
+  function animate() {
+    ctx.clearRect(0, 0, W, H);
+
+    // Spawn new lasers periodically
+    frame++;
+    if (frame % 40 === 0 && lasers.length < MAX_LASERS) {
+      spawnLaser();
+    }
+
+    // Update and draw
+    for (let i = lasers.length - 1; i >= 0; i--) {
+      const l = lasers[i];
+      l.progress += l.speed;
+      if (l.progress > 1 + l.tail) {
+        lasers.splice(i, 1);
+        continue;
+      }
+      drawLaser(l);
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  // Spawn a couple immediately
+  spawnLaser();
+  setTimeout(spawnLaser, 300);
+  animate();
+
+  window.addEventListener('resize', resize);
+})();
+
 // --- Navbar scroll effect ---
 const navbar = document.getElementById('navbar');
 
