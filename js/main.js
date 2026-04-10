@@ -489,19 +489,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
   // --- Shape definitions: staggered delays (ms) for sequential drops ---
   if (isMobile) {
-    // 12 shapes for mobile
+    // 6 shapes for mobile — keep it light
     add('circle', W * 0.15, -200, 0,    { r: 40, density: 0.005, bounce: 0.3, friction: 0.4, frictionStatic: 0.7, air: 0.003 });
-    add('rect',   W * 0.80, -250, 600,  { w: 55, h: 55, cr: 14, density: 0.004, bounce: 0.25, friction: 0.5, frictionStatic: 0.8, air: 0.004 });
-    add('circle', W * 0.50, -300, 1200, { r: 25, density: 0.003, bounce: 0.45, friction: 0.3, air: 0.005 });
-    add('circle', W * 0.65, -220, 1800, { r: 32, density: 0.004, bounce: 0.3, friction: 0.35, air: 0.004 });
-    add('rect',   W * 0.35, -200, 2500, { w: 80, h: 32, cr: 16, density: 0.003, bounce: 0.3, friction: 0.45, frictionStatic: 0.7, air: 0.004 });
-    add('rect',   W * 0.55, -280, 3200, { w: 42, h: 42, cr: 12, density: 0.003, bounce: 0.35, friction: 0.4, air: 0.005 });
-    add('circle', W * 0.40, -250, 3800, { r: 20, density: 0.002, bounce: 0.5, friction: 0.25, air: 0.006 });
-    add('circle', W * 0.85, -300, 4500, { r: 28, density: 0.003, bounce: 0.35, friction: 0.35, air: 0.004 });
-    add('rect',   W * 0.20, -200, 5200, { w: 65, h: 28, cr: 14, density: 0.002, bounce: 0.3, friction: 0.4, air: 0.005 });
-    add('circle', W * 0.70, -350, 5800, { r: 15, density: 0.001, bounce: 0.55, friction: 0.2, air: 0.008, accent: true });
-    add('circle', W * 0.25, -280, 6500, { r: 35, density: 0.004, bounce: 0.35, friction: 0.35, air: 0.003 });
-    add('circle', W * 0.45, -320, 7200, { r: 12, density: 0.0008, bounce: 0.6, friction: 0.15, air: 0.01, accent: true });
+    add('rect',   W * 0.80, -250, 700,  { w: 55, h: 55, cr: 14, density: 0.004, bounce: 0.25, friction: 0.5, frictionStatic: 0.8, air: 0.004 });
+    add('circle', W * 0.50, -300, 1500, { r: 25, density: 0.003, bounce: 0.45, friction: 0.3, air: 0.005 });
+    add('rect',   W * 0.35, -200, 2300, { w: 80, h: 32, cr: 16, density: 0.003, bounce: 0.3, friction: 0.45, frictionStatic: 0.7, air: 0.004 });
+    add('circle', W * 0.65, -250, 3100, { r: 32, density: 0.004, bounce: 0.3, friction: 0.35, air: 0.004 });
+    add('circle', W * 0.45, -320, 3900, { r: 12, density: 0.0008, bounce: 0.6, friction: 0.15, air: 0.01, accent: true });
   } else {
     // 22 shapes for desktop — doubled
 
